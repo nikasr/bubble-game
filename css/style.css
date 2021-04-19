@@ -1,0 +1,20 @@
+body{
+    background-color: rgb(103, 115, 153);
+}
+
+.logo{
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    background-color:rgb(16, 230, 26)
+}
+
+#buble{
+    background-color:rgb(16, 230, 26);
+    border: 1px solid black;
+}
+
