@@ -5,6 +5,7 @@ var amimacao = 900; // Tempo da animação (em milisegundos)
 var radius = 50; // Determina o raio do circulo
 var x = 0;
 var cont = 0; //contatdor do placar
+var tempo = 0;
 
 //coordenadas da bolha no momento do click
 var xbola = 0;
@@ -40,6 +41,8 @@ function desenhaCirculo() {
     context.stroke();
 
     Placar();
+
+    tempo++;
 
     // Adiciona uma cahamada a cada X milisegundos
     window.setTimeout(desenhaCirculo, amimacao);
@@ -77,7 +80,22 @@ function Placar(){
  
 	context.font = "bold 18px sans-serif";	
 	context.fillStyle = "red";
-	context.fillText('SCORE = '+ cont,480,20);
+	context.fillText('PLACAR = '+ cont,480,20);
+    context.fillText('TEMPO  = '+ tempo,480,60);
+
+    if (tempo >= (60)){
+        
+
+        if (cont<30){
+            alert("QUE PENA! INFELIZMENTE VOCÊ PERDEU!");
+        }else{
+            alert("PARABÉNS! VOCÊ VENCEU - PLACAR FINAL : " + cont); 
+        }
+        
+        cont = 0;
+        tempo = 0;
+        window.onload = desenhaCirculo;
+    }
 }
 
 // Adiciona movimento ao carregar a página
