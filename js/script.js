@@ -1,8 +1,9 @@
 // Inicia a chamada do canvas no JS
 var canvas = document.getElementById("buble"), context = canvas.getContext("2d");
 
-var amimacao = 600; // Tempo da animação (em milisegundos)
-var radius = 30; // Determina o raio do circulo
+var amimacao = 900; // Tempo da animação (em milisegundos)
+var radius = 50; // Determina o raio do circulo
+var x = 0;
 
 // Monta o circulo no canvas com a posição
 function desenhaCirculo() {
@@ -14,15 +15,28 @@ function desenhaCirculo() {
     // Limpa e desenha o circulo na posição
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.beginPath();
+
+    var my_gradient = context.createLinearGradient(centerX, centerX, centerY, centerY-50);
+    my_gradient.addColorStop(0, "blue");
+    my_gradient.addColorStop(1, "white");
+
     context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-    context.fillStyle = "#00FFF0";
+    context.fillStyle = my_gradient;
+
     context.fill();
     context.lineWidth = 1;
-    context.strokeStyle = "#00000";
+    context.strokeStyle = "#D4DFE3";
+
     context.stroke();
 
     // Adiciona uma cahamada a cada X milisegundos
     window.setTimeout(desenhaCirculo, amimacao);
+}
+
+//Conta as bolhas furadas
+function Furou() {
+    x++;
+   alert("furou " + x);
 }
 
 // Adiciona movimento ao carregar a página
